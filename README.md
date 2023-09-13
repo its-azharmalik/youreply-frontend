@@ -16,27 +16,44 @@ To contribute to the YouReply frontend, follow these steps:
 ### Setting Up the Development Environment
 
 1. Clone this repository:
-   ```bash
-   git clone [frontend-repo-url]
-   ```
+
+```bash
+git clone https://github.com/its-azharmalik/youreply-frontend.git
+```
+
 2. Navigate to the project directory:
-   ```bash
-   cd youreply-frontend
-   ```
+
+```bash
+cd youreply-frontend
+```
+
 3. Install dependencies:
-   ```bash
-   npm install
-   ```
+
+```bash
+npm install
+```
 
 ### Running the Development Server
 
-To start the development server, run: ```bash npm run dev
+To start the development server, run:
+
+```bash
+npm run dev
+```
 
 The application will be available at http://localhost:3000.
 
 ### Building for Production
 
-To build the production-ready frontend, run: ```bash npm run build
+To build the production-ready frontend, run:
+
+```bash
+npm run build
+```
+
+To build with the backend server follow the backend repository
+
+Backend Repository(https://github.com/its-azharmalik/youreply-backend)
 
 ## Tech Stack
 
@@ -79,3 +96,7 @@ mywritingfrenzy@gmail.com.
 
 Thank you for contributing to the **YouReply frontend**, and we look forward to
 working with you!
+
+```
+
+```
