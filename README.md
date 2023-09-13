@@ -51,7 +51,7 @@ To build the production-ready frontend, run:
 npm run build
 ```
 
-To build with the backend server follow the backend repository
+### To run with the backend server follow the backend repository
 
 Backend Repository(https://github.com/its-azharmalik/youreply-backend)
 
