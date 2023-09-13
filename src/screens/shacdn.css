@@ -1,0 +1,76 @@
+/* shacdn.css */
+
+/* Reset default margin and padding */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Set box-sizing to border-box for all elements */
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+/* Basic styling for buttons */
+.sh-button {
+	display: inline-block;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #007bff; /* Blue */
+	color: #fff; /* White */
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.sh-button:hover {
+	background-color: #0056b3; /* Darker blue on hover */
+	color: #fff; /* White */
+}
+
+/* Styling for primary buttons */
+.sh-primary {
+	background-color: #ff5722; /* Orange */
+	color: #fff; /* White */
+}
+
+.sh-primary:hover {
+	background-color: #e64a19; /* Darker orange on hover */
+	color: #fff; /* White */
+}
+
+/* Header styling */
+.sh-header {
+	padding: 40px 0;
+	background-color: #333; /* Dark gray */
+	text-align: center;
+	color: #fff; /* White text on dark gray background */
+}
+
+.sh-header h1 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+
+.sh-header p {
+	font-size: 1.4rem;
+	margin-bottom: 30px;
+}
+
+/* Content section styling */
+.sh-content {
+	padding: 60px 0;
+	text-align: center;
+}
+
+/* Footer styling */
+.sh-footer {
+	padding: 20px 0;
+	background-color: #f8f8f8; /* Light gray */
+	color: #333; /* Dark gray text on light gray background */
+	text-align: center;
+}
