@@ -96,7 +96,3 @@ mywritingfrenzy@gmail.com.
 
 Thank you for contributing to the **YouReply frontend**, and we look forward to
 working with you!
-
-```
-
-```
