@@ -33,7 +33,7 @@ const LandingScreen = () => {
 
 	const googleSubmitHandler = async (e) => {
 		e.preventDefault();
-		window.open('http://localhost:8000/api/auth/google', '_self');
+		window.open('http://54.66.46.192/api/auth/google', '_self');
 	};
 
 	// const submitHandler = async (e) => {
