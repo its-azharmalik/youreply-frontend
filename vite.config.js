@@ -8,12 +8,6 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		port: 3000,
-		proxy: {
-			'/api': {
-				target: 'http://api.youreply.tech/',
-				changeOrigin: true,
-			},
-		},
 	},
 	baseUrl: '.',
 	paths: {

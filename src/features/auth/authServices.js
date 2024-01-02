@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { DOMAIN } from '../../utils/constsnts';
 
-const API_URL = '/api/auth';
+const API_URL = `${DOMAIN}/api/auth`;
 
 // Regsiter User
 const register = async (userData) => {

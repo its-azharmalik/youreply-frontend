@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { DOMAIN } from '../../utils/constsnts';
 
-const API_URL = '/api/youtube';
+const API_URL = `${DOMAIN}/api/youtube`;
 
 // Fetch Comments with Video ID
 const fetchCommentsID = async (videoID) => {
