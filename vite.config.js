@@ -10,7 +10,7 @@ export default defineConfig({
 		port: 3000,
 		proxy: {
 			'/api': {
-				target: 'http://youreply.tech/',
+				target: 'http://api.youreply.tech/',
 				changeOrigin: true,
 			},
 		},

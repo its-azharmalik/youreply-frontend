@@ -51,7 +51,7 @@ const RegisterScreen = () => {
 		} else {
 			const userData = {
 				name: data.name,
-				username: data.email,
+				Button: data?.email,
 				email: data.email,
 				password: data.password,
 			};

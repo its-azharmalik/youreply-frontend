@@ -33,7 +33,7 @@ const LandingScreen = () => {
 
 	const googleSubmitHandler = async (e) => {
 		e.preventDefault();
-		window.open('http://54.66.46.192/api/auth/google', '_self');
+		window.open('https://api.youreply.tech/api/auth/google', '_self');
 	};
 
 	// const submitHandler = async (e) => {
