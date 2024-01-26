@@ -1,1 +1,1 @@
-export const DOMAIN = 'https://youreply.tech/';
+export const DOMAIN = 'http://localhost:8000';

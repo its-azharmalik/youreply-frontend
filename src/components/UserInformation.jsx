@@ -2,26 +2,32 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { fetchVideos } from '../features/youtube/youtubeSlice';
+import VideosList from './VideoList';
 
 const UserInformation = ({
-	videoIDRef,
+	selectedVideo,
+	setSelectedVideo,
 	fetchCommentsHandler,
 	userBehaviour,
 	setUserBehaviour,
 }) => {
 	const userPrompt = JSON.parse(localStorage.getItem('userPrompt'));
-	const youtubeComments = useSelector((state) => state.youtube.youtubeComments);
+	const youtubeVideos = useSelector((state) => state.youtube.youtubeVideos);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchVideos());
+	}, [dispatch]);
+
 	useEffect(() => {
 		setUserBehaviour(userPrompt?.userBehaviour);
-		videoIDRef.current.value =
-			youtubeComments?.body?.data.length > 0
-				? youtubeComments?.body?.data[0].videoId
-				: '';
 	}, []);
 
 	return (
@@ -40,16 +46,14 @@ const UserInformation = ({
 							value={userBehaviour}
 							onChange={(e) => setUserBehaviour(e.target.value)}
 						/>
-						<Label className='mb-2 mt-4 ml-2'>Video Link</Label>
-						<Input
-							className='mb-2'
-							label='Enter Video ID'
-							id='form1'
-							type='text'
-							required={true}
-							ref={videoIDRef}
+						<Label className='m-2 mt-4 mb-4 ml-2'>
+							Select Video to Analyse
+						</Label>
+						<VideosList
+							videos={youtubeVideos?.body?.videos}
+							selectedVideo={selectedVideo}
+							setSelectedVideo={setSelectedVideo}
 						/>
-
 						<Button
 							type='submit'
 							className='mt-4'>{`Let's Analyse Comments`}</Button>

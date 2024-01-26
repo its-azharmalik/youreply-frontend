@@ -25,7 +25,7 @@ const HomeScreenFunctions = () => {
 	const navigate = useNavigate();
 	const { toast } = useToast();
 
-	const videoIDRef = useRef();
+	const [selectedVideo, setSelectedVideo] = useState(null);
 
 	const fetchCommentsHandler = async (e) => {
 		e?.preventDefault();
@@ -43,7 +43,7 @@ const HomeScreenFunctions = () => {
 		}
 		let userPrompt = JSON.parse(localStorage.getItem('userPrompt'));
 
-		const videoID = videoIDRef.current?.value;
+		const videoID = selectedVideo?.id?.videoId;
 		if (videoID) {
 			const ans = await dispatch(
 				fetchComments({
@@ -81,7 +81,6 @@ const HomeScreenFunctions = () => {
 	};
 
 	const replyHandler = async (commentId) => {
-		console.log('Reply Handler', commentId);
 		// Use this comment Id to send this to backend with all the prompt to make a api call for an AI generated Response for this comment
 		dispatch(
 			generateReply({
@@ -147,7 +146,8 @@ const HomeScreenFunctions = () => {
 
 	return {
 		fetchCommentsHandler,
-		videoIDRef,
+		selectedVideo,
+		setSelectedVideo,
 		userInfo,
 		promptReplys,
 		comments,

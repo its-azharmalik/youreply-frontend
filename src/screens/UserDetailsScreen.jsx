@@ -5,7 +5,8 @@ import UserInformation from '../components/UserInformation';
 const UserDetailsScreen = () => {
 	const {
 		fetchCommentsHandler,
-		videoIDRef,
+		selectedVideo,
+		setSelectedVideo,
 		userBehaviour,
 		setUserBehaviour,
 		userInfo,
@@ -37,7 +38,8 @@ const UserDetailsScreen = () => {
 			</div>
 
 			<UserInformation
-				videoIDRef={videoIDRef}
+				selectedVideo={selectedVideo}
+				setSelectedVideo={setSelectedVideo}
 				fetchCommentsHandler={fetchCommentsHandler}
 				userBehaviour={userBehaviour}
 				setUserBehaviour={setUserBehaviour}

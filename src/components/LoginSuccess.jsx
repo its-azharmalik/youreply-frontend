@@ -15,6 +15,9 @@ const LoginSuccess = () => {
 
 	useEffect(() => {
 		dispatch(googleLogin());
+	}, [dispatch]);
+
+	useEffect(() => {
 		if (!isLoading) {
 			if (userInfo && isSuccess) {
 				navigate('/user-info');
@@ -24,6 +27,7 @@ const LoginSuccess = () => {
 			}
 		}
 	}, [dispatch, isLoading, isError, isSuccess, message, navigate, userInfo]);
+
 	return <Loading textMessage={"Congrat's! you're Logged in.."} />;
 };
 

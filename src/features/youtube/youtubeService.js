@@ -3,6 +3,21 @@ import { DOMAIN } from '../../utils/constsnts';
 
 const API_URL = `${DOMAIN}/api/youtube`;
 
+// Fetch Videos using Search Query
+const fetchVideos = async (searchQuery) => {
+	const response = await axios.post(
+		API_URL + '/get-my-videos',
+		{ searchQuery },
+		{
+			withCredentials: true,
+		}
+	);
+	if (response.data) {
+		localStorage.setItem('youtubeVideos', JSON.stringify(response.data));
+	}
+	return response.data;
+};
+
 // Fetch Comments with Video ID
 const fetchCommentsID = async (videoID) => {
 	const response = await axios.post(
@@ -53,6 +68,7 @@ const publishOnYoutube = async (data) => {
 // };
 
 const youtubeService = {
+	fetchVideos,
 	fetchCommentsID,
 	generateReply,
 	publishOnYoutube,

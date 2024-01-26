@@ -23,7 +23,9 @@ const login = async (userData) => {
 
 // Google Login User
 const googleLogin = async () => {
-	const response = await axios.get('/api/users/', { withCredentials: true });
+	const response = await axios.get(`${DOMAIN}/api/users/`, {
+		withCredentials: true,
+	});
 	if (response.data) {
 		localStorage.setItem('userInfo', JSON.stringify(response.data));
 	}
@@ -33,7 +35,7 @@ const googleLogin = async () => {
 // logout
 
 const fullLogout = async () => {
-	const response = await axios.get('/api/auth/logout', {
+	const response = await axios.get(`${DOMAIN}/api/auth/logout`, {
 		withCredentials: true,
 	});
 

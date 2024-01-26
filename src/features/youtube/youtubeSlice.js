@@ -3,6 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import youtubeService from './youtubeService';
 
 const initialState = {
+	youtubeVideos: localStorage.getItem('youtubeVideos')
+		? JSON.parse(localStorage.getItem('youtubeVideos'))
+		: null,
 	youtubeComments: localStorage.getItem('youtubeComments')
 		? JSON.parse(localStorage.getItem('youtubeComments'))
 		: null,
@@ -15,6 +18,20 @@ const initialState = {
 		? JSON.parse(localStorage.getItem('repliedComments'))
 		: null,
 };
+
+// Fetch Videos using Search Query
+export const fetchVideos = createAsyncThunk(
+	'youtube/videos',
+	async (searchQuery, thunkAPI) => {
+		try {
+			return await youtubeService.fetchVideos(searchQuery);
+		} catch (error) {
+			console.log(error);
+			const message = error.response.data.error;
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
 
 // Fetch Comments using VIDEO ID
 export const fetchComments = createAsyncThunk(
@@ -73,6 +90,22 @@ const youtubeSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
+			//fetchVideos
+			.addCase(fetchVideos.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(fetchVideos.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.youtubeVideos = action.payload;
+				state.message = action.payload.message;
+			})
+			.addCase(fetchVideos.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
+				state.youtubeVideos = null;
+			})
 			// fetchComments
 			.addCase(fetchComments.pending, (state) => {
 				state.isLoading = true;
@@ -87,7 +120,7 @@ const youtubeSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
-				state.userInfo = null;
+				state.youtubeComments = null;
 			})
 			// generateReply
 			.addCase(generateReply.pending, (state) => {
@@ -105,7 +138,6 @@ const youtubeSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
-				state.userInfo = null;
 			})
 			// publishOnYoutube
 			.addCase(publishOnYoutube.pending, (state) => {
@@ -121,7 +153,6 @@ const youtubeSlice = createSlice({
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
-				state.userInfo = null;
 			});
 	},
 });
